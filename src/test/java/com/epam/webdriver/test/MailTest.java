@@ -2,6 +2,7 @@ package com.epam.webdriver.test;
 
 import com.epam.webdriver.base.BaseTest;
 import com.epam.webdriver.model.Email;
+import com.epam.webdriver.pattern.factorymethod.EmailFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

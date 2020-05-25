@@ -1,7 +1,6 @@
-package com.epam.webdriver.base;
+package com.epam.webdriver.page;
 
 import com.epam.webdriver.model.Email;
-import com.epam.webdriver.page.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;

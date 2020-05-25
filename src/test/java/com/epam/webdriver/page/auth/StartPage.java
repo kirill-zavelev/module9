@@ -1,9 +1,10 @@
-package com.epam.webdriver.page;
+package com.epam.webdriver.page.auth;
 
-import org.openqa.selenium.StaleElementReferenceException;
+import com.epam.webdriver.page.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class StartPage extends AbstractPage {
 
@@ -15,12 +16,8 @@ public class StartPage extends AbstractPage {
     }
 
     public QuickActionsPanelPage clickOnUsername() {
-        try {
-            loggedUsername.click();
-        } catch (StaleElementReferenceException sere) {
-            driver.navigate().refresh();
-            loggedUsername.click();
-        }
+        wait.until(ExpectedConditions.refreshed(ExpectedConditions.stalenessOf(loggedUsername)));
+        loggedUsername.click();
 
         return new QuickActionsPanelPage(driver);
     }

@@ -1,8 +1,8 @@
-package com.epam.webdriver.pattern;
+package com.epam.webdriver.pattern.factorymethod;
 
 import com.epam.webdriver.model.Email;
 import org.openqa.selenium.WebElement;
 
 public interface EmailCreator {
-    Email createEmail(WebElement element);
+    void createEmail(WebElement element);
 }

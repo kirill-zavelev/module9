@@ -1,6 +1,6 @@
-package com.epam.webdriver.page;
+package com.epam.webdriver.page.mailfolders;
 
-import com.epam.webdriver.base.BasePage;
+import com.epam.webdriver.page.BasePage;
 import com.epam.webdriver.model.Email;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

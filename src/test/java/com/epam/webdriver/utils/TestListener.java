@@ -18,6 +18,7 @@ import java.time.format.DateTimeFormatter;
 public class TestListener implements ITestListener {
 
     private Logger logger = LogManager.getLogger("logger");
+    private DateUtils dateUtils = new DateUtils();
 
     public void onTestStart(ITestResult result) {
 
@@ -54,16 +55,11 @@ public class TestListener implements ITestListener {
         try {
             FileUtils.copyFile(screenCapture, new File(
                     ".//target/screenshots/"
-                    + getCurrentTimeAsString() +
+                    + dateUtils.getCurrentTimeAsString() +
                     ".png"));
             }
         catch (IOException ioe) {
             logger.error("Failed to save screenshot: " + ioe.getLocalizedMessage());
         }
-    }
-
-    private String getCurrentTimeAsString(){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern( "uuuu-MM-dd_HH-mm-ss" );
-        return ZonedDateTime.now().format(formatter);
     }
 }

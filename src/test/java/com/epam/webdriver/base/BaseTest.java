@@ -1,7 +1,11 @@
 package com.epam.webdriver.base;
 
 import com.epam.webdriver.driver.DriverSingleton;
-import com.epam.webdriver.page.*;
+import com.epam.webdriver.page.auth.LoginPage;
+import com.epam.webdriver.page.auth.QuickActionsPanelPage;
+import com.epam.webdriver.page.mailactions.MailCreationPage;
+import com.epam.webdriver.page.mailfolders.DraftPage;
+import com.epam.webdriver.page.mailfolders.InboxPage;
 import com.epam.webdriver.utils.PropertyLoader;
 import com.epam.webdriver.utils.TestListener;
 import org.openqa.selenium.WebDriver;

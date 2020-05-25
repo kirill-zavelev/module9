@@ -1,10 +1,10 @@
-package com.epam.webdriver.page;
+package com.epam.webdriver.page.auth;
 
+import com.epam.webdriver.page.AbstractPage;
+import com.epam.webdriver.page.mailfolders.InboxPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import java.util.List;
 
 public class QuickActionsPanelPage extends AbstractPage {
 
