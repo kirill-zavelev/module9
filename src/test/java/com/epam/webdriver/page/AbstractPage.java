@@ -15,12 +15,12 @@ public abstract class AbstractPage {
 
     protected final WebDriver driver;
     protected final WebDriverWait wait;
-    protected final JavascriptExecutor jsExecutor;
+//    protected final JavascriptExecutor jsExecutor;
 
     protected AbstractPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, TIME_OUT_IN_SECONDS);
-        this.jsExecutor = (JavascriptExecutor) driver;
+//        this.jsExecutor = (JavascriptExecutor) driver;
         driver.manage().timeouts().implicitlyWait(TIME_OUT_IN_SECONDS, TimeUnit.SECONDS);
         PageFactory.initElements(driver, this);
     }
@@ -50,10 +50,10 @@ public abstract class AbstractPage {
         }
     }
 
-    protected void highLightText(WebElement element) {
-        jsExecutor.executeScript
-                ("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", element);
-    }
+//    protected void highLightText(WebElement element) {
+//        jsExecutor.executeScript
+//                ("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", element);
+//    }
 
     public void callContextMenu(WebElement element) {
         Actions actions = new Actions(driver);

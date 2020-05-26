@@ -1,4 +1,4 @@
-package com.epam.webdriver.pattern.factorymethod;
+package com.epam.webdriver.factory;
 
 public enum EmailType {
     WITH_EMPTY_SUBJECT,

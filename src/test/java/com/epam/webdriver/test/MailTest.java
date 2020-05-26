@@ -2,9 +2,7 @@ package com.epam.webdriver.test;
 
 import com.epam.webdriver.base.BaseTest;
 import com.epam.webdriver.model.Email;
-import com.epam.webdriver.pattern.factorymethod.EmailCreator;
-import com.epam.webdriver.pattern.factorymethod.EmailFactory;
-import com.epam.webdriver.pattern.factorymethod.EmailType;
+import com.epam.webdriver.factory.EmailType;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -20,7 +18,7 @@ public class MailTest extends BaseTest {
 
     @Test(groups = {"regression"})
     public void sendEmailToDraftTest() {
-        Email expectedEmail = new Email();
+        Email expectedEmail = EMAIL_FACTORY.getEmail(EmailType.WITH_EMPTY_SUBJECT);
 
         quickActionsPanelPage.openMailBox();
 
@@ -110,10 +108,5 @@ public class MailTest extends BaseTest {
         boolean isPasswordInputInteractable = loginPage.isPasswordInputDisplayed();
 
         Assert.assertTrue(isPasswordInputInteractable, "User was not logged out.");
-    }
-
-    public static void main(String[] args) {
-        EmailFactory emailFactory = new EmailFactory();
-        emailFactory.getEmail(EmailType.WITH_EMPTY_SUBJECT);
     }
 }

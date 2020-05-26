@@ -1,8 +1,7 @@
-package com.epam.webdriver.pattern.factorymethod;
+package com.epam.webdriver.factory;
 
 import com.epam.webdriver.model.Email;
 import com.epam.webdriver.utils.PropertyLoader;
-import org.openqa.selenium.WebElement;
 
 public class EmailWithSeveralRecipientsCreator implements EmailCreator {
 

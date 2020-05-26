@@ -37,7 +37,7 @@ public class TestListener implements ITestListener {
     }
 
     public void onStart(ITestContext context) {
-
+        logger.info("Test started");
     }
 
     public void onFinish(ITestContext context) {

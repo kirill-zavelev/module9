@@ -29,7 +29,7 @@ public class LoginPage extends AbstractPage {
 
     private LoginPage setUserName(String username) {
         userName.sendKeys(username);
-        highLightText(userName);
+//        highLightText(userName);
 
         return this;
     }
