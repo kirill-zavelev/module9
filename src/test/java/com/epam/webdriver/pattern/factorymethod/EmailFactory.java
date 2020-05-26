@@ -4,21 +4,20 @@ import com.epam.webdriver.model.Email;
 
 public class EmailFactory {
 
-    public EmailCreator getEmail(EmailType type) {
-
-        EmailCreator toReturn = null;
+    public Email getEmail(EmailType type) {
+        EmailWithEmptySubjectCreator emailWithEmptySubjectCreator = new EmailWithEmptySubjectCreator();
+        EmailWithSeveralRecipientsCreator emailWithSeveralRecipientsCreator = new EmailWithSeveralRecipientsCreator();
 
         switch (type) {
             case WITH_EMPTY_SUBJECT:
-                toReturn = new EmailWithEmptySubjectCreator();
+                new EmailWithEmptySubjectCreator();
                 break;
             case WITH_TWO_RECIPIENTS:
-                toReturn = new EmailWithSeveralRecipientsCreator();
+                new EmailWithSeveralRecipientsCreator();
                 break;
             default:
-                toReturn = new EmailWithEmptySubjectCreator();
+                return null;
         }
 
-        return toReturn;
     }
 }
