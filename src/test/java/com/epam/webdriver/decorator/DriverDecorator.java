@@ -17,6 +17,10 @@ public class DriverDecorator implements WebDriver {
         this.driver = driver;
     }
 
+    public WebDriver getWebDriver() {
+        return driver;
+    }
+
     @Override
     public void get(String s) {
         driver.get(s);

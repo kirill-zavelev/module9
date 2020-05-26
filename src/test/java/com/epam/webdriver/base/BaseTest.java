@@ -35,10 +35,10 @@ public class BaseTest {
         driver = new DriverDecorator(DriverSingleton.getDriver());
         driver.get(BASE_URL);
 
-        loginPage = new LoginPage(new DriverDecorator(driver));
-        mailCreationPage = new MailCreationPage(new DriverDecorator(driver));
-        draftPage = new DraftPage(new DriverDecorator(driver));
-        inboxPage = new InboxPage(new DriverDecorator(driver));
+        loginPage = new LoginPage(driver);
+        mailCreationPage = new MailCreationPage(driver);
+        draftPage = new DraftPage(driver);
+        inboxPage = new InboxPage(driver);
         quickActionsPanelPage = loginPage.login(USERNAME, PASSWORD).clickOnUsername();
     }
 

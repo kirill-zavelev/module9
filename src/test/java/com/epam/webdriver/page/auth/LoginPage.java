@@ -1,6 +1,8 @@
 package com.epam.webdriver.page.auth;
 
 import com.epam.webdriver.page.AbstractPage;
+import com.epam.webdriver.utils.JsOperationsUtils;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -29,7 +31,8 @@ public class LoginPage extends AbstractPage {
 
     private LoginPage setUserName(String username) {
         userName.sendKeys(username);
-//        highLightText(userName);
+//        JavascriptExecutor jsExecutor = new JavascriptExecutor();
+//        new JsOperationsUtils()highLightText(userName);
 
         return this;
     }

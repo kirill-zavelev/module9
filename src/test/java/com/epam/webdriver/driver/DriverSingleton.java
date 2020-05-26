@@ -13,7 +13,7 @@ public class DriverSingleton {
 
     private DriverSingleton() {}
 
-    public static WebDriver getDriver() {
+    public static DriverDecorator getDriver() {
         if (null == driver) {
             switch (PropertyLoader.loadProperty("browser")) {
                 case  "firefox": {
