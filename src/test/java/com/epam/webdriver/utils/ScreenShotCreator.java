@@ -13,6 +13,8 @@ import java.io.IOException;
 public class ScreenShotCreator {
 
     private static final Logger LOGGER = LogManager.getLogger("logger");
+    private static final String SCREENSHOT_FILE_PATH = ".//target/screenshots/";
+    private static final String SCREENSHOT_FILE_FORMAT = ".png";
 
     public static void saveScreenshot() {
 
@@ -22,11 +24,11 @@ public class ScreenShotCreator {
                 .getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(screenCapture, new File(
-                    ".//target/screenshots/"
-                            + DateUtils.getCurrentTimeAsString() +
-                            ".png"));
-        }
-        catch (IOException ioe) {
+                    SCREENSHOT_FILE_PATH
+                            + DateUtils.getCurrentTimeAsString()
+                            + SCREENSHOT_FILE_FORMAT)
+            );
+        } catch (IOException ioe) {
             LOGGER.error("Failed to save screenshot: " + ioe.getLocalizedMessage());
         }
     }
