@@ -4,9 +4,9 @@ import java.util.ResourceBundle;
 
 public class PropertyLoader {
 
-    private static ResourceBundle resourceBundle = ResourceBundle.getBundle(System.getProperty("environment"));
+    private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(System.getProperty("environment"));
 
     public static String loadProperty(String key){
-        return resourceBundle.getString(key);
+        return RESOURCE_BUNDLE.getString(key);
     }
 }
