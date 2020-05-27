@@ -23,11 +23,13 @@ public class ScreenShotCreator {
                 .getWebDriver())
                 .getScreenshotAs(OutputType.FILE);
         try {
+            String currentTimeAsString = DateUtils.getCurrentTimeAsString();
             FileUtils.copyFile(screenCapture, new File(
                     SCREENSHOT_FILE_PATH
-                            + DateUtils.getCurrentTimeAsString()
+                            + currentTimeAsString
                             + SCREENSHOT_FILE_FORMAT)
             );
+            LOGGER.info("Screenshot saved to : " + SCREENSHOT_FILE_PATH + " | name : " + currentTimeAsString + SCREENSHOT_FILE_FORMAT);
         } catch (IOException ioe) {
             LOGGER.error("Failed to save screenshot: " + ioe.getLocalizedMessage());
         }
