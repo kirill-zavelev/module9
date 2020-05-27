@@ -10,11 +10,11 @@ import org.openqa.selenium.TakesScreenshot;
 import java.io.File;
 import java.io.IOException;
 
-public class ScreenShotCreator extends DateUtils {
+public class ScreenShotCreator {
 
     private Logger logger = LogManager.getLogger("logger");
 
-    protected void saveScreenshot() {
+    public void saveScreenshot() {
 
         File screenCapture = ((TakesScreenshot) DriverSingleton
                 .getDriver()
@@ -23,7 +23,7 @@ public class ScreenShotCreator extends DateUtils {
         try {
             FileUtils.copyFile(screenCapture, new File(
                     ".//target/screenshots/"
-                            + dateUtils.getCurrentTimeAsString() +
+                            + DateUtils.getCurrentTimeAsString() +
                             ".png"));
         }
         catch (IOException ioe) {

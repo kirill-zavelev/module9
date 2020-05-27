@@ -31,8 +31,8 @@ public class LoginPage extends AbstractPage {
 
     private LoginPage setUserName(String username) {
         userName.sendKeys(username);
-//        JavascriptExecutor jsExecutor = new JavascriptExecutor();
-//        new JsOperationsUtils()highLightText(userName);
+        JsOperationsUtils jsOperationsUtils = new JsOperationsUtils(driver);
+        jsOperationsUtils.highLightText(userName);
 
         return this;
     }
