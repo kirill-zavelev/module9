@@ -3,6 +3,7 @@ package com.epam.webdriver.decorator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -45,7 +46,16 @@ public class DriverDecorator implements WebDriver {
 
     @Override
     public WebElement findElement(By by) {
-        return driver.findElement(by);
+        WebElement element = null;
+
+        try {
+            element = driver.findElement(by);
+            LOGGER.info("Element found by : " + by.toString());
+        } catch (NoSuchElementException nse) {
+            LOGGER.error("Element con not be found by : " + by.toString());
+        }
+
+        return element;
     }
 
     @Override
