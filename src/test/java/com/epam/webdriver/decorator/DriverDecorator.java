@@ -13,7 +13,7 @@ import java.util.Set;
 public class DriverDecorator implements WebDriver {
 
     private static final Logger LOGGER = LogManager.getLogger("logger");
-    protected WebDriver driver;
+    private WebDriver driver;
 
     public DriverDecorator(WebDriver driver) {
         this.driver = driver;
