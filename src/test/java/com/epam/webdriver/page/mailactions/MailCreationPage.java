@@ -1,5 +1,6 @@
 package com.epam.webdriver.page.mailactions;
 
+import com.epam.webdriver.decorator.DriverDecorator;
 import com.epam.webdriver.model.Email;
 import com.epam.webdriver.page.AbstractPage;
 import org.openqa.selenium.WebDriver;
@@ -25,7 +26,7 @@ public class MailCreationPage extends AbstractPage {
     @FindBy(xpath = "//button[contains(@class, 'Button_action')]")
     private List<WebElement> sendEmailBtn;
 
-    public MailCreationPage(WebDriver driver) {
+    public MailCreationPage(DriverDecorator driver) {
         super(driver);
     }
 

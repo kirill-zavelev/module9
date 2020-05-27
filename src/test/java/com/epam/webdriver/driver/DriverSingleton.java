@@ -3,7 +3,6 @@ package com.epam.webdriver.driver;
 import com.epam.webdriver.decorator.DriverDecorator;
 import com.epam.webdriver.utils.PropertyLoader;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 

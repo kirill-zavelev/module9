@@ -1,5 +1,6 @@
 package com.epam.webdriver.page.auth;
 
+import com.epam.webdriver.decorator.DriverDecorator;
 import com.epam.webdriver.page.AbstractPage;
 import com.epam.webdriver.page.mailfolders.InboxPage;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +18,7 @@ public class QuickActionsPanelPage extends AbstractPage {
     @FindBy(xpath = "//a[contains(@tabindex, '0') and text()='Выйти']")
     private WebElement logoutBtn;
 
-    public QuickActionsPanelPage(WebDriver driver) {
+    public QuickActionsPanelPage(DriverDecorator driver) {
         super(driver);
     }
 

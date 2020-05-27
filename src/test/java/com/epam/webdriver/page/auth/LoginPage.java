@@ -1,8 +1,8 @@
 package com.epam.webdriver.page.auth;
 
+import com.epam.webdriver.decorator.DriverDecorator;
 import com.epam.webdriver.page.AbstractPage;
-import com.epam.webdriver.utils.JsOperationsUtils;
-import org.openqa.selenium.JavascriptExecutor;
+import com.epam.webdriver.utils.JsOperations;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,14 +25,13 @@ public class LoginPage extends AbstractPage {
     @FindBy(className = "passp-footer")
     private WebElement footer;
 
-    public LoginPage(WebDriver driver) {
+    public LoginPage(DriverDecorator driver) {
         super(driver);
     }
 
     private LoginPage setUserName(String username) {
         userName.sendKeys(username);
-        JsOperationsUtils jsOperationsUtils = new JsOperationsUtils(driver);
-        jsOperationsUtils.highLightText(userName);
+        new JsOperations(driver).highLightText(userName);
 
         return this;
     }

@@ -10,7 +10,6 @@ import com.epam.webdriver.page.mailfolders.InboxPage;
 import com.epam.webdriver.factory.EmailFactory;
 import com.epam.webdriver.utils.PropertyLoader;
 import com.epam.webdriver.utils.TestListener;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
 @Listeners({TestListener.class})

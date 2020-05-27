@@ -1,18 +1,20 @@
 package com.epam.webdriver.utils;
 
+import com.epam.webdriver.decorator.DriverDecorator;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class JsOperationsUtils {
+public class JsOperations {
 
-    public final JavascriptExecutor jsExecutor;
+    private final WebDriver driver;
 
-    public JsOperationsUtils(JavascriptExecutor jsExecutor) {
-        this.jsExecutor = jsExecutor;
+    public JsOperations(DriverDecorator driver) {
+        this.driver = driver.getWebDriver();
     }
 
     public void highLightText(WebElement element) {
-        jsExecutor.executeScript
+        ((JavascriptExecutor) driver).executeScript
                 ("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", element);
     }
 }

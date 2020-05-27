@@ -1,5 +1,6 @@
 package com.epam.webdriver.page;
 
+import com.epam.webdriver.decorator.DriverDecorator;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
@@ -13,10 +14,10 @@ public abstract class AbstractPage {
 
     private static final int TIME_OUT_IN_SECONDS = 10;
 
-    protected final WebDriver driver;
+    protected final DriverDecorator driver;
     protected final WebDriverWait wait;
 
-    protected AbstractPage(WebDriver driver) {
+    protected AbstractPage(DriverDecorator driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, TIME_OUT_IN_SECONDS);
         driver.manage().timeouts().implicitlyWait(TIME_OUT_IN_SECONDS, TimeUnit.SECONDS);

@@ -1,5 +1,6 @@
 package com.epam.webdriver.page.mailfolders;
 
+import com.epam.webdriver.decorator.DriverDecorator;
 import com.epam.webdriver.page.BasePage;
 import com.epam.webdriver.model.Email;
 import org.openqa.selenium.By;
@@ -20,7 +21,7 @@ public class DraftPage extends BasePage {
     @FindBy(xpath = "//a[@href='#draft']")
     private WebElement draftFolderBtn;
 
-    public DraftPage(WebDriver driver) {
+    public DraftPage(DriverDecorator driver) {
         super(driver);
     }
 

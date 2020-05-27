@@ -30,5 +30,4 @@ public class ScreenShotCreator {
             logger.error("Failed to save screenshot: " + ioe.getLocalizedMessage());
         }
     }
-
 }

@@ -1,5 +1,6 @@
 package com.epam.webdriver.page.auth;
 
+import com.epam.webdriver.decorator.DriverDecorator;
 import com.epam.webdriver.page.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,7 +12,7 @@ public class StartPage extends AbstractPage {
     @FindBy(className = "user-account__name")
     private WebElement loggedUsername;
 
-    protected StartPage(WebDriver driver) {
+    protected StartPage(DriverDecorator driver) {
         super(driver);
     }
 

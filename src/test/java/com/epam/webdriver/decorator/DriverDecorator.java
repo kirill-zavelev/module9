@@ -29,7 +29,7 @@ public class DriverDecorator implements WebDriver {
     @Override
     public String getCurrentUrl() {
         Logger logger = LogManager.getLogger("logger");
-        logger.info("Driver getting");
+        logger.info("Driver gets current url");
         return driver.getCurrentUrl();
     }
 
