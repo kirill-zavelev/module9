@@ -12,9 +12,9 @@ import java.io.IOException;
 
 public class ScreenShotCreator {
 
-    private Logger logger = LogManager.getLogger("logger");
+    private static final Logger LOGGER = LogManager.getLogger("logger");
 
-    public void saveScreenshot() {
+    public static void saveScreenshot() {
 
         File screenCapture = ((TakesScreenshot) DriverSingleton
                 .getDriver()
@@ -27,7 +27,7 @@ public class ScreenShotCreator {
                             ".png"));
         }
         catch (IOException ioe) {
-            logger.error("Failed to save screenshot: " + ioe.getLocalizedMessage());
+            LOGGER.error("Failed to save screenshot: " + ioe.getLocalizedMessage());
         }
     }
 }

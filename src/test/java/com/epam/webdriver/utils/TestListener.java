@@ -8,7 +8,7 @@ import org.testng.ITestResult;
 
 public class TestListener implements ITestListener {
 
-    private Logger logger = LogManager.getLogger("logger");
+    private static final Logger LOGGER = LogManager.getLogger("logger");
 
     public void onTestStart(ITestResult result) {
 
@@ -19,7 +19,7 @@ public class TestListener implements ITestListener {
     }
 
     public void onTestSkipped(ITestResult result) {
-
+        ScreenShotCreator.saveScreenshot();
     }
 
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
@@ -27,14 +27,14 @@ public class TestListener implements ITestListener {
     }
 
     public void onStart(ITestContext context) {
-        logger.info("Test started");
+        LOGGER.info("Test started");
     }
 
     public void onFinish(ITestContext context) {
-        logger.info("Test finished");
+        LOGGER.info("Test finished");
     }
 
     public void onTestFailure(ITestResult result) {
-        new ScreenShotCreator().saveScreenshot();
+        ScreenShotCreator.saveScreenshot();
     }
 }

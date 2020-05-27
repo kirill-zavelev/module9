@@ -11,6 +11,7 @@ import java.util.Set;
 
 public class DriverDecorator implements WebDriver {
 
+    private static final Logger LOGGER = LogManager.getLogger("logger");
     protected WebDriver driver;
 
     public DriverDecorator(WebDriver driver) {
@@ -28,8 +29,7 @@ public class DriverDecorator implements WebDriver {
 
     @Override
     public String getCurrentUrl() {
-        Logger logger = LogManager.getLogger("logger");
-        logger.info("Driver gets current url");
+        LOGGER.info("Driver gets current url");
         return driver.getCurrentUrl();
     }
 
