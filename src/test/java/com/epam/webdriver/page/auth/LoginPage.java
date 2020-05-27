@@ -3,7 +3,6 @@ package com.epam.webdriver.page.auth;
 import com.epam.webdriver.decorator.DriverDecorator;
 import com.epam.webdriver.page.AbstractPage;
 import com.epam.webdriver.utils.JsOperations;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -31,7 +30,7 @@ public class LoginPage extends AbstractPage {
 
     private LoginPage setUserName(String username) {
         userName.sendKeys(username);
-        new JsOperations(driver).highLightText(userName);
+        JsOperations.highLightText(userName);
 
         return this;
     }
