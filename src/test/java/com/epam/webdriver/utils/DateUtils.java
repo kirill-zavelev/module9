@@ -5,8 +5,9 @@ import java.time.format.DateTimeFormatter;
 
 public class DateUtils {
 
+    private static final String DATE_PATTERN = "uuuu-MM-dd_HH-mm-ss";
+
     public static String getCurrentTimeAsString(){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern( "uuuu-MM-dd_HH-mm-ss" );
-        return ZonedDateTime.now().format(formatter);
+        return ZonedDateTime.now().format(DateTimeFormatter.ofPattern(DATE_PATTERN));
     }
 }
