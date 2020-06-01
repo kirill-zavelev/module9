@@ -12,7 +12,7 @@ public class StartPage extends AbstractPage {
     @FindBy(className = "user-account__name")
     private WebElement loggedUsername;
 
-    protected StartPage(DriverDecorator driver) {
+    public StartPage(DriverDecorator driver) {
         super(driver);
     }
 

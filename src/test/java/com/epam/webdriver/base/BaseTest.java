@@ -10,6 +10,8 @@ import com.epam.webdriver.page.mailfolders.DraftPage;
 import com.epam.webdriver.page.mailfolders.InboxPage;
 import com.epam.webdriver.utils.PropertyLoader;
 import com.epam.webdriver.utils.TestListener;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -17,10 +19,10 @@ import org.testng.annotations.Listeners;
 @Listeners({TestListener.class})
 public class BaseTest {
 
-    private static final String USERNAME = PropertyLoader.loadProperty("user.name");
-    private static final String PASSWORD = PropertyLoader.loadProperty("user.password");
+    protected static final String USERNAME = PropertyLoader.loadProperty("user.name");
+    protected static final String PASSWORD = PropertyLoader.loadProperty("user.password");
     protected static final String EMAIL = PropertyLoader.loadProperty("user.send.from");
-    private static final String BASE_URL = PropertyLoader.loadProperty("base.url");
+    protected static final String BASE_URL = PropertyLoader.loadProperty("base.url");
     protected static final EmailFactory EMAIL_FACTORY = new EmailFactory();
 
     protected LoginPage loginPage;
@@ -31,7 +33,7 @@ public class BaseTest {
 
     protected DriverDecorator driver;
 
-    @BeforeMethod
+    @Before
     public void setUpBrowser() {
         driver = new DriverDecorator(DriverSingleton.getDriver());
         driver.get(BASE_URL);
@@ -43,7 +45,7 @@ public class BaseTest {
         quickActionsPanelPage = loginPage.login(USERNAME, PASSWORD).clickOnUsername();
     }
 
-    @AfterMethod(alwaysRun = true)
+    @After
     public void tearDownBrowser() {
         DriverSingleton.closeDriver();
     }
