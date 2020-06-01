@@ -1,9 +1,12 @@
-Feature: As a user I want to update email
-  Scenario: Email is updated and its fields equals updated data
-    Given the user opens Yandex Passport login page
-    When the user clicks on mail box
-    And the user opens mail creation form
+Feature: As a user I want to send email
+  Scenario Outline: Email is sent and its fields equals setting data
+    Given the user opens mail box
+    When the user opens mail creation form
     And the user filling recipient, subject and body email fields
     And the user clicks send button
-    And the user clicks on Send item
-    Then email with correct data exists in Send folder
+    And the user opens "<Send>" item
+    Then email with correct data exists in send folder
+    Examples:
+      | Send |
+      | Deleted |
+      | Draft |

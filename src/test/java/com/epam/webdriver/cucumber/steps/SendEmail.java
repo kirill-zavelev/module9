@@ -14,12 +14,14 @@ import com.epam.webdriver.utils.PropertyLoader;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.testng.Assert;
 
 public class SendEmail {
 
-    private static final Email expectedEmail = new EmailFactory().getEmail(EmailType.WITH_EMPTY_SUBJECT);
+    private static final Email expectedEmail = new Email();
 
     private static final String USERNAME = PropertyLoader.loadProperty("user.name");
     private static final String PASSWORD = PropertyLoader.loadProperty("user.password");
@@ -48,32 +50,35 @@ public class SendEmail {
         DriverSingleton.closeDriver();
     }
 
-    @When("the user clicks on mail box")
-    public void clickOnMailBox() {
+    @Given("the user opens mail box")
+    public void openMailBox() {
         quickActionsPanelPage.openMailBox();
     }
 
-    @And("the user opens mail creation form")
+    @When("the user opens mail creation form")
     public void openMailCreationForm() {
         inboxPage.openMailCreationForm();
     }
 
     @And("the user filling recipient, subject and body email fields")
-    public void fillEmailFields() {
+    public void fillEmail() {
         mailCreationPage.fillEmail(expectedEmail);
     }
 
     @And("the user clicks send button")
-    public void clickCloseButton() {
-        mailCreationPage.sendMailAsDraft();
+    public void clickSendEmail() {
+        mailCreationPage.sendMail();
     }
 
-    @And("the user clicks on Send item")
-    public void clickDraftsFolder() {
-        inboxPage.openDraftsFolder();
+    @And("the user opens send item")
+    public void openSendFolder() {
+        inboxPage.openSendFolder();
     }
 
-    @Then("email with correct data exists in Send folder")
-    public void createdEmailExistsInTheList() {
+    @Then("email with correct data exists in send folder")
+    public void verifyEmail() {
+        Email actualEmail = inboxPage.getActualEmailFromList(expectedEmail);
+
+        Assert.assertEquals(actualEmail, expectedEmail, "Expected email does not exist in the list.");
     }
 }

@@ -7,7 +7,8 @@ import io.cucumber.testng.CucumberOptions;
         plugin = "pretty",
         monochrome = true,
         glue = "com.epam.webdriver.cucumber.steps",
-        features = "src/test/resources/feature"
+        features = "src/test/resources/feature",
+        tags = {"@Test2"}
 )
 public class CucumberRunnerTest extends AbstractTestNGCucumberTests {
 }
