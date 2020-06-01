@@ -1,16 +1,12 @@
 package com.epam.webdriver.cucumber.steps;
 
+import com.epam.webdriver.base.BaseTest;
 import com.epam.webdriver.decorator.DriverDecorator;
 import com.epam.webdriver.driver.DriverSingleton;
-import com.epam.webdriver.factory.EmailFactory;
-import com.epam.webdriver.factory.EmailType;
 import com.epam.webdriver.model.Email;
 import com.epam.webdriver.page.auth.LoginPage;
-import com.epam.webdriver.page.auth.QuickActionsPanelPage;
 import com.epam.webdriver.page.mailactions.MailCreationPage;
-import com.epam.webdriver.page.mailfolders.DraftPage;
 import com.epam.webdriver.page.mailfolders.InboxPage;
-import com.epam.webdriver.utils.PropertyLoader;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
@@ -19,20 +15,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
 
-public class SendEmail {
+public class SendEmail extends BaseTest {
 
     private static final Email expectedEmail = new Email();
-
-    private static final String USERNAME = PropertyLoader.loadProperty("user.name");
-    private static final String PASSWORD = PropertyLoader.loadProperty("user.password");
-    private static final String BASE_URL = PropertyLoader.loadProperty("base.url");
-
-    private LoginPage loginPage;
-    private QuickActionsPanelPage quickActionsPanelPage;
-    private InboxPage inboxPage;
-    private MailCreationPage mailCreationPage;
-
-    private DriverDecorator driver;
 
     @Before
     public void setUpBrowser() {
@@ -78,7 +63,6 @@ public class SendEmail {
     @Then("email with correct data exists in send folder")
     public void verifyEmail() {
         Email actualEmail = inboxPage.getActualEmailFromList(expectedEmail);
-
         Assert.assertEquals(actualEmail, expectedEmail, "Expected email does not exist in the list.");
     }
 }
