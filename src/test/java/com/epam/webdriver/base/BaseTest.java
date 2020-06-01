@@ -33,7 +33,7 @@ public class BaseTest {
 
     protected DriverDecorator driver;
 
-    @Before
+    @BeforeMethod
     public void setUpBrowser() {
         driver = new DriverDecorator(DriverSingleton.getDriver());
         driver.get(BASE_URL);
@@ -45,7 +45,7 @@ public class BaseTest {
         quickActionsPanelPage = loginPage.login(USERNAME, PASSWORD).clickOnUsername();
     }
 
-    @After
+    @AfterMethod
     public void tearDownBrowser() {
         DriverSingleton.closeDriver();
     }
