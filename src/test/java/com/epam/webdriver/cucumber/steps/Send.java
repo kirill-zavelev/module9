@@ -7,7 +7,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
 
-public class Send extends BaseTest {
+public class Send {
 
     Email expectedEmail = new Email();
 
