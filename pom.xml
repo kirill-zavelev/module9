@@ -85,12 +85,10 @@
             <artifactId>cucumber-core</artifactId>
             <version>5.7.0</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/picocontainer/picocontainer -->
         <dependency>
-            <groupId>picocontainer</groupId>
-            <artifactId>picocontainer</artifactId>
-            <version>3</version>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-picocontainer</artifactId>
+            <version>1.2.4</version>
         </dependency>
-
     </dependencies>
 </project>

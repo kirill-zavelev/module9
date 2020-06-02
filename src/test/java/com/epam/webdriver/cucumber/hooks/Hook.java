@@ -6,15 +6,22 @@ import com.epam.webdriver.utils.PropertyLoader;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 
-public class Hook {
+public class Hook extends BaseHook {
 
     private static final String BASE_URL = PropertyLoader.loadProperty("base.url");
 
-    private DriverDecorator driver;
+    private BaseHook baseHook;
+
+    public Hook() {
+    }
+
+    public Hook(BaseHook baseHook) {
+        this.baseHook = baseHook;
+    }
 
     @Before
     public void setUp() {
-        driver = new DriverDecorator(DriverSingleton.getDriver());
+        baseHook.driver = new DriverDecorator(DriverSingleton.getDriver());
         driver.get(BASE_URL);
     }
 

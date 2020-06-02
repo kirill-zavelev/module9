@@ -1,19 +1,26 @@
 package com.epam.webdriver.cucumber.steps;
 
+import com.epam.webdriver.cucumber.hooks.BaseHook;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
 
-public class Login {
+public class Login extends BaseHook {
 
-    @Given("user is on login page {string}")
+    private BaseHook baseHook;
+
+    public Login(BaseHook baseHook) {
+        this.baseHook = baseHook;
+    }
+
+    @Given("user is on login page .")
     public void getBaseUrl(String baseUrl) {
         driver.get(baseUrl);
     }
 
-    @When("user enter username {string}")
+    @When("user enter username .")
     public void enterUserName(String username) {
         loginPage.setUserName(username);
     }
@@ -23,7 +30,7 @@ public class Login {
         loginPage.clickLogin();
     }
 
-    @And("user enter password {string}")
+    @And("user enter password .")
     public void enterPassword(String password) {
         loginPage.setPassword(password);
     }
