@@ -5,6 +5,7 @@ import com.epam.webdriver.decorator.DriverDecorator;
 import com.epam.webdriver.driver.DriverSingleton;
 import com.epam.webdriver.model.Email;
 import com.epam.webdriver.page.auth.LoginPage;
+import com.epam.webdriver.page.auth.QuickActionsPanelPage;
 import com.epam.webdriver.page.mailactions.MailCreationPage;
 import com.epam.webdriver.page.mailfolders.InboxPage;
 import io.cucumber.java.After;
@@ -19,21 +20,23 @@ public class SendEmail extends BaseTest {
 
     private static final Email expectedEmail = new Email();
 
-    @Before
-    public void setUpBrowser() {
-        driver = new DriverDecorator(DriverSingleton.getDriver());
-        driver.get(BASE_URL);
+//    @Before
+//    public void setUpBrowser() {
+//        driver = new DriverDecorator(DriverSingleton.getDriver());
+//        driver.get(BASE_URL);
+//
+//        loginPage = new LoginPage(driver);
+//        mailCreationPage = new MailCreationPage(driver);
+//        inboxPage = new InboxPage(driver);
+//        quickActionsPanelPage = loginPage.login(USERNAME, PASSWORD).clickOnUsername();
+//    }
+//
+//    @After
+//    public void tearDownBrowser() {
+//        DriverSingleton.closeDriver();
+//    }
 
-        loginPage = new LoginPage(driver);
-        mailCreationPage = new MailCreationPage(driver);
-        inboxPage = new InboxPage(driver);
-        quickActionsPanelPage = loginPage.login(USERNAME, PASSWORD).clickOnUsername();
-    }
-
-    @After
-    public void tearDownBrowser() {
-        DriverSingleton.closeDriver();
-    }
+    private QuickActionsPanelPage quickActionsPanelPage = new QuickActionsPanelPage();
 
     @Given("the user opens mail box")
     public void openMailBox() {

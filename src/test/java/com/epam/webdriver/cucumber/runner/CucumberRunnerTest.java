@@ -1,4 +1,4 @@
-package com.epam.webdriver.cucumber;
+package com.epam.webdriver.cucumber.runner;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
