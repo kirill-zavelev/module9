@@ -1,6 +1,5 @@
 package com.epam.webdriver.cucumber.steps;
 
-import com.epam.webdriver.base.BaseTest;
 import com.epam.webdriver.decorator.DriverDecorator;
 import com.epam.webdriver.driver.DriverSingleton;
 import com.epam.webdriver.page.auth.LoginPage;
@@ -15,27 +14,29 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
 
-public class Login extends BaseTest {
+public class Login {
 
-    protected StartPage startPage;
-
-    @Before
-    public void setUpBrowser() {
-        driver = new DriverDecorator(DriverSingleton.getDriver());
-
-        loginPage = new LoginPage(driver);
-        quickActionsPanelPage = new QuickActionsPanelPage(driver);
-        startPage = new StartPage(driver);
-    }
+    private StartPage startPage;
+    private LoginPage loginPage;
+    private QuickActionsPanelPage quickActionsPanelPage;
+    private DriverDecorator driver;
 
     @After
-    public void tearDownBrowser() {
-        DriverSingleton.closeDriver();
+    protected void tearDownBrowser() {
+        driver.quit();
+        driver.close();
+        driver = null;
+    }
+
+    @Before
+    public void setUp() {
+        driver = DriverSingleton.getDriver();
     }
 
     @Given("user is on login page {string}")
     public void getBaseUrl(String baseUrl) {
         driver.get(baseUrl);
+        loginPage = new LoginPage(driver);
     }
 
     @When("user enter username {string}")
@@ -55,11 +56,13 @@ public class Login extends BaseTest {
 
     @And("clicks on avatar")
     public void clickOnUsername() {
+        startPage = new StartPage(driver);
         startPage.clickOnUsername();
     }
 
     @Then("user is on start page with user's username {string} displayed")
     public void verifyUserName(String username) {
+        quickActionsPanelPage = new QuickActionsPanelPage(driver);
         String actualEmail = quickActionsPanelPage.getActualEmail();
 
         Assert.assertEquals(actualEmail, username, "Incorrect email is displayed.");

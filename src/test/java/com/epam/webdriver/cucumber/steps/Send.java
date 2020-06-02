@@ -1,28 +1,53 @@
 package com.epam.webdriver.cucumber.steps;
 
-import com.epam.webdriver.base.BaseTest;
+import com.epam.webdriver.decorator.DriverDecorator;
+import com.epam.webdriver.driver.DriverSingleton;
 import com.epam.webdriver.model.Email;
+import com.epam.webdriver.page.auth.QuickActionsPanelPage;
+import com.epam.webdriver.page.mailactions.MailCreationPage;
+import com.epam.webdriver.page.mailfolders.InboxPage;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import org.testng.Assert;
 
-public class Send extends BaseTest {
+public class Send {
 
-    Email expectedEmail = new Email();
+    private QuickActionsPanelPage quickActionsPanelPage;
+    private MailCreationPage mailCreationPage;
+    private InboxPage inboxPage;
+    private Email expectedEmail = new Email();
 
-    @When("user clicks on Mailbox item")
+    private DriverDecorator driver;
+
+    @After
+    protected void tearDownBrowser() {
+        driver.quit();
+        driver.close();
+        driver = null;
+    }
+
+    @Before
+    public void setUp() {
+        driver = DriverSingleton.getDriver();
+    }
+
+    @And("user clicks on Mailbox item")
     public void userClicksOnMailboxItem() {
+        quickActionsPanelPage = new QuickActionsPanelPage(driver);
         quickActionsPanelPage.openMailBox();
     }
 
     @And("clicks Create new Email button")
     public void clicksCreateNewEmailButton() {
+        inboxPage = new InboxPage(driver);
         inboxPage.openMailCreationForm();
     }
 
     @And("filling Recipient, Subject, Body")
     public void fillingRecipientSubjectBody() {
+        mailCreationPage = new MailCreationPage(driver);
         mailCreationPage.fillEmail(expectedEmail);
     }
 
