@@ -28,28 +28,28 @@ public class LoginPage extends AbstractPage {
         super(driver);
     }
 
-    private LoginPage setUserName(String username) {
+    public LoginPage setUserName(String username) {
         userName.sendKeys(username);
         JsOperations.highLightText(userName);
 
         return this;
     }
 
-    private LoginPage clickLogin() {
+    public LoginPage clickLogin() {
         wait.until(ExpectedConditions.visibilityOf(footer));
         submitLoginBtn.click();
 
         return this;
     }
 
-    private LoginPage setPassword(String password) {
+    public LoginPage setPassword(String password) {
         waitForElementToBeClickable(this.password);
         this.password.sendKeys(password);
 
         return this;
     }
 
-    private LoginPage clickPassword() {
+    public LoginPage clickPassword() {
         submitPasswordBtn.click();
 
         return this;

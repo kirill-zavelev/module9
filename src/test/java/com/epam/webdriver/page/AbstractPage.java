@@ -2,6 +2,7 @@ package com.epam.webdriver.page;
 
 import com.epam.webdriver.decorator.DriverDecorator;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
