@@ -21,10 +21,6 @@ public class DraftPage extends BasePage {
     @FindBy(xpath = "//a[@href='#draft']")
     private WebElement draftFolderBtn;
 
-    public DraftPage(DriverDecorator driver) {
-        super(driver);
-    }
-
     public DraftPage openEmail(Email email) {
         waitForElementToBeClickable(draftFolderBtn);
         findEmailPreview(emailPreviews, email).click();

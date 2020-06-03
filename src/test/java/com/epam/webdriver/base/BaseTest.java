@@ -31,18 +31,16 @@ public class BaseTest {
     protected MailCreationPage mailCreationPage;
     protected DraftPage draftPage;
 
-    protected DriverDecorator driver;
-
     @BeforeMethod
     public void setUpBrowser() {
-        driver = new DriverDecorator(DriverSingleton.getDriver());
-        driver.get(BASE_URL);
-
-        loginPage = new LoginPage(driver);
-        mailCreationPage = new MailCreationPage(driver);
-        draftPage = new DraftPage(driver);
-        inboxPage = new InboxPage(driver);
-        quickActionsPanelPage = loginPage.login(USERNAME, PASSWORD).clickOnUsername();
+        loginPage = new LoginPage();
+        mailCreationPage = new MailCreationPage();
+        draftPage = new DraftPage();
+        inboxPage = new InboxPage();
+        quickActionsPanelPage = loginPage
+                .openBasePage()
+                .login(USERNAME, PASSWORD)
+                .clickOnUsername();
     }
 
     @AfterMethod

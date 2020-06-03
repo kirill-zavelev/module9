@@ -18,10 +18,6 @@ public class QuickActionsPanelPage extends AbstractPage {
     @FindBy(xpath = "//a[contains(@tabindex, '0') and text()='Выйти']")
     private WebElement logoutBtn;
 
-    public QuickActionsPanelPage(DriverDecorator driver) {
-        super(driver);
-    }
-
     public String getActualEmail() {
 
         return loggedUserEmail.getText();
@@ -30,7 +26,7 @@ public class QuickActionsPanelPage extends AbstractPage {
     public InboxPage openMailBox() {
         waitForElementToBeClickable(mailPage).click();
 
-        return new InboxPage(driver);
+        return new InboxPage();
     }
 
     public QuickActionsPanelPage clickOnLogoutLink() {

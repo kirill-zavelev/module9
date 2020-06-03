@@ -1,7 +1,7 @@
 Feature: As a user I want to login to the system
 
   Background: User is on LoginPage
-    Given user is on login page "https://passport.yandex.ru"
+    Given user is on login page
 
     Scenario Outline: Send email
       When user enter username "<username>"

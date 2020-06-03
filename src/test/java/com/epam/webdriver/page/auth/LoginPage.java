@@ -3,11 +3,14 @@ package com.epam.webdriver.page.auth;
 import com.epam.webdriver.decorator.DriverDecorator;
 import com.epam.webdriver.page.AbstractPage;
 import com.epam.webdriver.utils.JsOperations;
+import com.epam.webdriver.utils.PropertyLoader;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginPage extends AbstractPage {
+
+    private static final String BASE_URL = PropertyLoader.loadProperty("base.url");
 
     @FindBy(id = "passp-field-login")
     private WebElement userName;
@@ -23,10 +26,6 @@ public class LoginPage extends AbstractPage {
 
     @FindBy(className = "passp-footer")
     private WebElement footer;
-
-    public LoginPage(DriverDecorator driver) {
-        super(driver);
-    }
 
     public LoginPage setUserName(String username) {
         userName.sendKeys(username);
@@ -61,10 +60,16 @@ public class LoginPage extends AbstractPage {
         setPassword(password);
         clickPassword();
 
-        return new StartPage(driver);
+        return new StartPage();
     }
 
     public boolean isPasswordInputDisplayed() {
         return wait.until(ExpectedConditions.visibilityOf(password)).isDisplayed();
+    }
+
+    public LoginPage openBasePage() {
+        driver.get(BASE_URL);
+
+        return this;
     }
 }

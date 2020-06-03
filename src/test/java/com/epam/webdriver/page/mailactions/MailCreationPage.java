@@ -26,10 +26,6 @@ public class MailCreationPage extends AbstractPage {
     @FindBy(xpath = "//button[contains(@class, 'Button_action')]")
     private List<WebElement> sendEmailBtn;
 
-    public MailCreationPage(DriverDecorator driver) {
-        super(driver);
-    }
-
     public MailCreationPage fillEmail(Email email) {
         waitForElementToBeClickable(sendTo);
         sendKeysWhenInputIntractable(sendTo, email.getRecipient());

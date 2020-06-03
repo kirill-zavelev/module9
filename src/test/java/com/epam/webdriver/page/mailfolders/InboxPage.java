@@ -17,15 +17,11 @@ public class InboxPage extends BasePage {
     @FindBy(xpath = "//a[@href='#sent']")
     private WebElement sendFolderBtn;
 
-    public InboxPage(DriverDecorator driver) {
-        super(driver);
-    }
-
     public DraftPage openDraftsFolder() {
         waitForElementToBeClickable(draftFolderBtn);
         draftFolderBtn.click();
 
-        return new DraftPage(driver);
+        return new DraftPage();
     }
 
     public InboxPage openSendFolder() {
