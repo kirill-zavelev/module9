@@ -1,4 +1,4 @@
-Feature: As a user I want to login to the system
+Feature: As a user I want to login to the system and send email
 
   Background: User is on LoginPage
     Given user is on login page
