@@ -13,3 +13,13 @@ Feature: As a user I want to login to the system
     Examples:
       | username             | password     |
       | buben.vika@yandex.by | 55555555vika |
+
+
+  Scenario: Send email
+    Given user is on start page
+    When user clicks on Mailbox item
+    And clicks Create new Email button
+    And filling Recipient, Subject, Body
+    And clicks Send button
+    And opens Send folder
+    Then Email with appropriate fields is in the list

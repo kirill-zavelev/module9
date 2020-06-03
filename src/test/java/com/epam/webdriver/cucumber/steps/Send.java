@@ -1,22 +1,37 @@
 package com.epam.webdriver.cucumber.steps;
 
-import com.epam.webdriver.cucumber.CucumberHooks;
 import com.epam.webdriver.model.Email;
+import com.epam.webdriver.page.auth.LoginPage;
 import com.epam.webdriver.page.auth.QuickActionsPanelPage;
 import com.epam.webdriver.page.mailactions.MailCreationPage;
 import com.epam.webdriver.page.mailfolders.InboxPage;
+import com.epam.webdriver.utils.PropertyLoader;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.testng.Assert;
 
 public class Send {
 
+    protected static final String USERNAME = PropertyLoader.loadProperty("user.name");
+    protected static final String PASSWORD = PropertyLoader.loadProperty("user.password");
+
     private QuickActionsPanelPage quickActionsPanelPage = new QuickActionsPanelPage();
     private MailCreationPage mailCreationPage = new MailCreationPage();
     private InboxPage inboxPage = new InboxPage();
+    private LoginPage loginPage = new LoginPage();
+
     private Email expectedEmail = new Email();
 
-    @And("user clicks on Mailbox item")
+    @Given("user is on start page")
+    public void userGoesToStartPage() {
+        loginPage.openBasePage()
+                .login(USERNAME, PASSWORD)
+                .clickOnUsername();
+    }
+
+    @When("user clicks on Mailbox item")
     public void userClicksOnMailboxItem() {
         quickActionsPanelPage.openMailBox();
     }

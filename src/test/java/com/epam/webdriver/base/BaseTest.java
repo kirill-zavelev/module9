@@ -19,10 +19,9 @@ import org.testng.annotations.Listeners;
 @Listeners({TestListener.class})
 public class BaseTest {
 
-    protected static final String USERNAME = PropertyLoader.loadProperty("user.name");
-    protected static final String PASSWORD = PropertyLoader.loadProperty("user.password");
+    private static final String USERNAME = PropertyLoader.loadProperty("user.name");
+    private static final String PASSWORD = PropertyLoader.loadProperty("user.password");
     protected static final String EMAIL = PropertyLoader.loadProperty("user.send.from");
-    protected static final String BASE_URL = PropertyLoader.loadProperty("base.url");
     protected static final EmailFactory EMAIL_FACTORY = new EmailFactory();
 
     protected LoginPage loginPage;
